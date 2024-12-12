@@ -3,7 +3,7 @@ package fiddlers
 import (
 	"net/url"
 
-	"github.com/LombardiDaniel/gopherbase/common"
+	"github.com/patos-ufscar/quack-week/common"
 )
 
 func GetFullObjStorageUrl(objPath string) (string, error) {

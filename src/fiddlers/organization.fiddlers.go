@@ -3,8 +3,8 @@ package fiddlers
 import (
 	"time"
 
-	"github.com/LombardiDaniel/gopherbase/common"
-	"github.com/LombardiDaniel/gopherbase/models"
+	"github.com/patos-ufscar/quack-week/common"
+	"github.com/patos-ufscar/quack-week/models"
 )
 
 func NewOrganization(orgName string, ownerId uint32) (*models.Organization, error) {

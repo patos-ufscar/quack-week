@@ -5,8 +5,8 @@ import (
 	"database/sql"
 	"net/url"
 
-	"github.com/LombardiDaniel/gopherbase/common"
-	"github.com/LombardiDaniel/gopherbase/models"
+	"github.com/patos-ufscar/quack-week/common"
+	"github.com/patos-ufscar/quack-week/models"
 	"github.com/stripe/stripe-go/v81"
 	"github.com/stripe/stripe-go/v81/checkout/session"
 )

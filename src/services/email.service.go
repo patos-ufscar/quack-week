@@ -1,6 +1,6 @@
 package services
 
-import "github.com/LombardiDaniel/gopherbase/models"
+import "github.com/patos-ufscar/quack-week/models"
 
 type EmailService interface {
 	SendEmailConfirmation(email string, name string, otp string) error

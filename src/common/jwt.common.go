@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/LombardiDaniel/gopherbase/models"
 	"github.com/golang-jwt/jwt"
+	"github.com/patos-ufscar/quack-week/models"
 )
 
 func WhyTokenIsExpired(tokenString string, secretKey []byte) string {

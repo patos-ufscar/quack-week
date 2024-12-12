@@ -3,7 +3,7 @@ package services
 import (
 	"context"
 
-	"github.com/LombardiDaniel/gopherbase/models"
+	"github.com/patos-ufscar/quack-week/models"
 	"github.com/stripe/stripe-go/v81"
 )
 

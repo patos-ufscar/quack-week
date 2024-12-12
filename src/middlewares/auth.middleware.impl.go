@@ -6,10 +6,10 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/LombardiDaniel/gopherbase/common"
-	"github.com/LombardiDaniel/gopherbase/fiddlers"
-	"github.com/LombardiDaniel/gopherbase/services"
 	"github.com/gin-gonic/gin"
+	"github.com/patos-ufscar/quack-week/common"
+	"github.com/patos-ufscar/quack-week/fiddlers"
+	"github.com/patos-ufscar/quack-week/services"
 )
 
 type AuthMiddlewareJwt struct {

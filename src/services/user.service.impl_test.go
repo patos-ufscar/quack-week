@@ -5,8 +5,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/LombardiDaniel/gopherbase/helpers"
-	"github.com/LombardiDaniel/gopherbase/models"
+	"github.com/patos-ufscar/quack-week/helpers"
+	"github.com/patos-ufscar/quack-week/models"
 )
 
 func TestUserServicePgImpl_CreateUser(t *testing.T) {

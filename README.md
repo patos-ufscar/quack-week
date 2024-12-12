@@ -1,5 +1,5 @@
 [![Licence](https://img.shields.io/github/license/LombardiDaniel/gopherbase?style=for-the-badge)](./LICENSE)
-[![BuildStatus](https://img.shields.io/github/actions/workflow/status/LombardiDaniel/gopherbase/ci.yml?style=for-the-badge)](https://github.com/LombardiDaniel/gopherbase/actions)
+[![BuildStatus](https://img.shields.io/github/actions/workflow/status/LombardiDaniel/gopherbase/ci.yml?style=for-the-badge)](https://github.com/patos-ufscar/quack-week/actions)
 
 # GopherBase
 

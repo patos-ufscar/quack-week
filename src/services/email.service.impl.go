@@ -7,8 +7,8 @@ import (
 	"path/filepath"
 	"text/template"
 
-	"github.com/LombardiDaniel/gopherbase/common"
-	"github.com/LombardiDaniel/gopherbase/models"
+	"github.com/patos-ufscar/quack-week/common"
+	"github.com/patos-ufscar/quack-week/models"
 	"github.com/resendlabs/resend-go"
 )
 

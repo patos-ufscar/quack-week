@@ -1,9 +1,9 @@
 package fiddlers
 
 import (
-	"github.com/LombardiDaniel/gopherbase/common"
-	"github.com/LombardiDaniel/gopherbase/models"
 	"github.com/gin-gonic/gin"
+	"github.com/patos-ufscar/quack-week/common"
+	"github.com/patos-ufscar/quack-week/models"
 )
 
 func GetClaimsFromGinCtx(ctx *gin.Context) (models.JwtClaims, error) {

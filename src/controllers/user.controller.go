@@ -9,12 +9,12 @@ import (
 	"path"
 	"strconv"
 
-	"github.com/LombardiDaniel/gopherbase/common"
-	"github.com/LombardiDaniel/gopherbase/fiddlers"
-	"github.com/LombardiDaniel/gopherbase/middlewares"
-	"github.com/LombardiDaniel/gopherbase/schemas"
-	"github.com/LombardiDaniel/gopherbase/services"
 	"github.com/gin-gonic/gin"
+	"github.com/patos-ufscar/quack-week/common"
+	"github.com/patos-ufscar/quack-week/fiddlers"
+	"github.com/patos-ufscar/quack-week/middlewares"
+	"github.com/patos-ufscar/quack-week/schemas"
+	"github.com/patos-ufscar/quack-week/services"
 )
 
 type UserController struct {

@@ -3,7 +3,7 @@ package services
 import (
 	"context"
 
-	"github.com/LombardiDaniel/gopherbase/models"
+	"github.com/patos-ufscar/quack-week/models"
 )
 
 type OrganizationService interface {

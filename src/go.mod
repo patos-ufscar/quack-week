@@ -1,4 +1,4 @@
-module github.com/LombardiDaniel/gopherbase
+module github.com/patos-ufscar/quack-week
 
 go 1.23.3
 

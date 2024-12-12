@@ -3,8 +3,8 @@ package services
 import (
 	"context"
 
-	"github.com/LombardiDaniel/gopherbase/models"
-	"github.com/LombardiDaniel/gopherbase/schemas"
+	"github.com/patos-ufscar/quack-week/models"
+	"github.com/patos-ufscar/quack-week/schemas"
 )
 
 type UserService interface {

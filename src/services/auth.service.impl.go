@@ -8,10 +8,10 @@ import (
 	"log/slog"
 	"time"
 
-	"github.com/LombardiDaniel/gopherbase/common"
-	"github.com/LombardiDaniel/gopherbase/models"
-	"github.com/LombardiDaniel/gopherbase/oauth"
 	"github.com/golang-jwt/jwt"
+	"github.com/patos-ufscar/quack-week/common"
+	"github.com/patos-ufscar/quack-week/models"
+	"github.com/patos-ufscar/quack-week/oauth"
 )
 
 type AuthServiceJwtImpl struct {
