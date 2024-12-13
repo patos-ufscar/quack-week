@@ -9,12 +9,12 @@ import (
 	"path"
 	"strconv"
 
-	"github.com/LombardiDaniel/gopherbase/common"
-	"github.com/LombardiDaniel/gopherbase/fiddlers"
-	"github.com/LombardiDaniel/gopherbase/middlewares"
-	"github.com/LombardiDaniel/gopherbase/schemas"
-	"github.com/LombardiDaniel/gopherbase/services"
 	"github.com/gin-gonic/gin"
+	"github.com/patos-ufscar/quack-week/common"
+	"github.com/patos-ufscar/quack-week/fiddlers"
+	"github.com/patos-ufscar/quack-week/middlewares"
+	"github.com/patos-ufscar/quack-week/schemas"
+	"github.com/patos-ufscar/quack-week/services"
 )
 
 type UserController struct {
@@ -357,7 +357,7 @@ func (c *UserController) SetPicture(ctx *gin.Context) {
 	}
 
 	objPath := path.Join("public", strconv.Itoa(int(claims.UserId)))
-	err = c.objService.Upload(ctx, common.DEFAULT_BUCKET, objPath, bytes.NewReader(picBytes))
+	err = c.objService.Upload(ctx, common.S3_BUCKET, objPath, bytes.NewReader(picBytes))
 	if err != nil {
 		slog.Error(err.Error())
 		ctx.String(http.StatusBadRequest, err.Error())

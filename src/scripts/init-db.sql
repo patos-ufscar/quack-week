@@ -118,9 +118,7 @@ CREATE TABLE oauth_users (
 CREATE TABLE payments (
     payment_id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     -- reverse: the product sold references the payment
-    -- product_id VARCHAR(255), -- REFERENCES products(product_id),
     user_id INT REFERENCES users (user_id) NOT NULL,
-    -- ammount DECIMAL(20, 2) NOT NULL,
     unit_ammount BIGINT NOT NULL,
     unit_currency CHAR(3) NOT NULL,
     payment_status TEXT CHECK (payment_status IN ('pending', 'complete', 'canceled')) DEFAULT 'pending',
@@ -128,5 +126,15 @@ CREATE TABLE payments (
     created_at TIMESTAMPTZ DEFAULT NOW() NOT NULL,
     completed_at TIMESTAMPTZ DEFAULT NULL
 );
+
+-- events
+CREATE TABLE events (
+    event_id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    owner_user_id INT REFERENCES users (user_id) NOT NULL,
+    owner_organization_id CHAR(5) REFERENCES organizations (organization_id) NOT NULL,
+    payment_id UUID REFERENCES payments (payment_id) NOT NULL,
+    created_at TIMESTAMPTZ DEFAULT NOW() NOT NULL,
+    exp TIMESTAMPTZ DEFAULT NULL,
+)
 
 COMMIT;

@@ -33,3 +33,4 @@ venv
 venv.nosync
 
 *.private.*
+private/
