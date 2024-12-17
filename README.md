@@ -10,3 +10,7 @@ API_HOST_URL + v1/auth/google/callback
 API_HOST_URL + v1/auth/github/callback
 
 https://github.com/CrunchyData/postgres-operator-examples
+
+```sh
+swag init && go run .
+```
