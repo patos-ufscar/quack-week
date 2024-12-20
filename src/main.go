@@ -42,12 +42,14 @@ var (
 	organizationService services.OrganizationService
 	objectService       services.ObjectService
 	billingService      services.BillingService
+	eventService        services.EventService
 
 	// Controllers
 	authController         controllers.AuthController
 	userController         controllers.UserController
 	organizationController controllers.OrganizationController
 	billingController      controllers.BillingController
+	eventController        controllers.EventController
 
 	// Middlewares
 	authMiddleware middlewares.AuthMiddleware
@@ -138,6 +140,7 @@ func init() {
 	organizationService = services.NewOrganizationServicePgImpl(db)
 	objectService = services.NewObjectServiceMinioImpl(minioClient)
 	billingService = services.NewBillingService(db, os.Getenv("STRIPE_API_KEY"))
+	eventService = services.NewEventServicePgImpl(db)
 
 	// Middleware
 	authMiddleware = middlewares.NewAuthMiddlewareJwt(authService)
@@ -147,6 +150,7 @@ func init() {
 	userController = controllers.NewUserController(authService, userService, emailService, objectService)
 	organizationController = controllers.NewOrganizationController(userService, emailService, organizationService)
 	billingController = controllers.NewBillingController(billingService, emailService, userService)
+	eventController = controllers.NewEventController(userService, emailService, organizationService, eventService, objectService)
 
 	router = gin.Default()
 	router.SetTrustedProxies([]string{"*"})
@@ -204,6 +208,7 @@ func main() {
 	userController.RegisterRoutes(basePath, authMiddleware)
 	organizationController.RegisterRoutes(basePath, authMiddleware)
 	billingController.RegisterRoutes(basePath, authMiddleware)
+	eventController.RegisterRoutes(basePath, authMiddleware)
 
 	taskRunner.Dispatch()
 

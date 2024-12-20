@@ -130,11 +130,13 @@ CREATE TABLE payments (
 -- events
 CREATE TABLE events (
     event_id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    event_name VARCHAR(255) NOT NULL,
+    cover_url VARCHAR DEFAULT NULL,
     owner_user_id INT REFERENCES users (user_id) NOT NULL,
     owner_organization_id CHAR(5) REFERENCES organizations (organization_id) NOT NULL,
-    payment_id UUID REFERENCES payments (payment_id) NOT NULL,
+    payment_id UUID REFERENCES payments (payment_id) DEFAULT NULL,
     created_at TIMESTAMPTZ DEFAULT NOW() NOT NULL,
-    exp TIMESTAMPTZ DEFAULT NULL,
-)
+    exp TIMESTAMPTZ DEFAULT NULL
+);
 
 COMMIT;
