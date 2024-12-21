@@ -6,12 +6,12 @@ import (
 	"fmt"
 	"log/slog"
 	"net/http"
-	"path"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
 	"github.com/patos-ufscar/quack-week/common"
 	"github.com/patos-ufscar/quack-week/fiddlers"
+	"github.com/patos-ufscar/quack-week/fiddlers/storage"
 	"github.com/patos-ufscar/quack-week/middlewares"
 	"github.com/patos-ufscar/quack-week/schemas"
 	"github.com/patos-ufscar/quack-week/services"
@@ -356,7 +356,7 @@ func (c *UserController) SetPicture(ctx *gin.Context) {
 		return
 	}
 
-	objPath := path.Join("public", "user-avatars", strconv.Itoa(int(claims.UserId)))
+	objPath := storage.GetPublicPath(storage.USER_AVATARS, strconv.Itoa(int(claims.UserId)))
 	err = c.objService.Upload(ctx, common.S3_BUCKET, objPath, bytes.NewReader(picBytes))
 	if err != nil {
 		slog.Error(err.Error())
@@ -364,7 +364,7 @@ func (c *UserController) SetPicture(ctx *gin.Context) {
 		return
 	}
 
-	objUrl, err := fiddlers.GetFullObjStorageUrl(objPath)
+	objUrl, err := storage.GetFullObjUrl(objPath)
 	if err != nil {
 		slog.Error(err.Error())
 		ctx.String(http.StatusBadRequest, err.Error())

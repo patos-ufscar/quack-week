@@ -5,11 +5,11 @@ import (
 	"encoding/base64"
 	"log/slog"
 	"net/http"
-	"path"
 
 	"github.com/gin-gonic/gin"
 	"github.com/patos-ufscar/quack-week/common"
 	"github.com/patos-ufscar/quack-week/fiddlers"
+	"github.com/patos-ufscar/quack-week/fiddlers/storage"
 	"github.com/patos-ufscar/quack-week/middlewares"
 	"github.com/patos-ufscar/quack-week/schemas"
 	"github.com/patos-ufscar/quack-week/services"
@@ -101,7 +101,7 @@ func (c *EventController) CreateEvent(ctx *gin.Context) {
 			return
 		}
 
-		objPath := path.Join("public", "event-banners", event.EventId)
+		objPath := storage.GetPublicPath(storage.EVENT_BANNERS, event.EventId)
 		err = c.objService.Upload(ctx, common.S3_BUCKET, objPath, bytes.NewReader(picBytes))
 		if err != nil {
 			slog.Error(err.Error())
@@ -109,7 +109,7 @@ func (c *EventController) CreateEvent(ctx *gin.Context) {
 			return
 		}
 
-		objUrl, err := fiddlers.GetFullObjStorageUrl(objPath)
+		objUrl, err := storage.GetFullObjUrl(objPath)
 		if err != nil {
 			slog.Error(err.Error())
 			ctx.String(http.StatusBadGateway, "BadGateway")
