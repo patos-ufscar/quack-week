@@ -27,9 +27,8 @@ services:
   #     S3_ACCESS_KEY_ID: S3_ACCESS_KEY_ID
   #     S3_SECRET_ACCESS_KEY: S3_SECRET_ACCESS_KEY
   #     S3_ENDPOINT: https://br-se1.magaluobjects.com
-  #     S3_SECURE: true
   #     S3_BUCKET: quack-week-gopherbase
-  #     S3_ENDPOINT: br-se1
+  #     S3_REGION: br-se1
   #     STRIPE_API_KEY: STRIPE_API_KEY
 
   db:
