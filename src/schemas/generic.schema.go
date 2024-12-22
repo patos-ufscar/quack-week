@@ -7,3 +7,11 @@ type Id struct {
 type Url struct {
 	Url string `json:"url" binding:"required"`
 }
+
+type Name struct {
+	Name string `json:"name" binding:"required"`
+}
+
+type UploadPicture struct {
+	Content string `json:"content" binding:"required" example:"base64 encoded string"`
+}

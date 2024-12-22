@@ -311,14 +311,14 @@ func (c *UserController) EditUser(ctx *gin.Context) {
 // @Consume application/json
 // @Accept json
 // @Produce plain
-// @Param   payload 	body 		schemas.UloadPicture true "picture json"
+// @Param   payload 	body 		schemas.UploadPicture true "picture json"
 // @Success 200 		{string} 	OKResponse "OK"
 // @Failure 400 		{string} 	ErrorResponse "Bad Request"
 // @Failure 409 		{string} 	ErrorResponse "Conflict"
 // @Failure 502 		{string} 	ErrorResponse "Bad Gateway"
 // @Router /v1/users/profile-picture [PUT]
 func (c *UserController) SetPicture(ctx *gin.Context) {
-	var pic schemas.UloadPicture
+	var pic schemas.UploadPicture
 
 	if err := ctx.ShouldBind(&pic); err != nil {
 		slog.Error(err.Error())
@@ -357,7 +357,7 @@ func (c *UserController) SetPicture(ctx *gin.Context) {
 	}
 
 	objPath := storage.GetPublicPath(storage.USER_AVATARS, strconv.Itoa(int(claims.UserId)))
-	err = c.objService.Upload(ctx, common.S3_BUCKET, objPath, bytes.NewReader(picBytes))
+	err = c.objService.Upload(ctx, common.S3_BUCKET, objPath, int64(len(picBytes)), bytes.NewReader(picBytes))
 	if err != nil {
 		slog.Error(err.Error())
 		ctx.String(http.StatusBadRequest, err.Error())
