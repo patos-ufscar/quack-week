@@ -6,7 +6,7 @@ on:
       - "main"
 
 jobs:
-  docker:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
@@ -36,3 +36,11 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
           repository: ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: update on portainer
+        shell: bash
+        run: |
+          curl -X POST ${{ secrets.PORTAINER_POST_UPDATE_URL }}
