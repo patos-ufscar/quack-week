@@ -37,9 +37,6 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
           repository: ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}
 
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
       - name: update on portainer
         shell: bash
         run: |
