@@ -11,10 +11,6 @@ import (
 	"strings"
 	"time"
 
-	// "github.com/aws/aws-sdk-go-v2/aws"
-	// "github.com/aws/aws-sdk-go-v2/credentials"
-	// "github.com/aws/aws-sdk-go-v2/service/s3"
-
 	_ "github.com/lib/pq"
 	"github.com/minio/minio-go/v7"
 

@@ -51,5 +51,7 @@ services:
     ports:
       - 8000:8080
 
+  # minio:
+
 volumes:
   postgres_data:
