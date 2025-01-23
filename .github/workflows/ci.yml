@@ -24,9 +24,9 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
-          context: .
+          context: backend/
           file: backend/Dockerfile
-          target: backend/server
+          target: server
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}:latest
           # platforms: linux/amd64,linux/arm64
