@@ -69,7 +69,7 @@ func (c *EventController) CreateEvent(ctx *gin.Context) {
 		return
 	}
 
-	event, err := c.eventService.CreateEvent(ctx, name.Name, claims.UserId, *claims.OrganizationId)
+	event, err := c.eventService.CreateEvent(ctx, name.Name, claims.UserId, *claims.OrganizationId, "")
 	if err != nil {
 		slog.Error(err.Error())
 		ctx.String(http.StatusBadGateway, "BadGateway")

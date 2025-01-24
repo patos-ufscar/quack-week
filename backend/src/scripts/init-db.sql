@@ -136,7 +136,18 @@ CREATE TABLE events (
     owner_organization_id CHAR(5) REFERENCES organizations (organization_id) NOT NULL,
     payment_id UUID REFERENCES payments (payment_id) DEFAULT NULL,
     created_at TIMESTAMPTZ DEFAULT NOW() NOT NULL,
-    exp TIMESTAMPTZ DEFAULT NULL
+    exp TIMESTAMPTZ DEFAULT NULL,
+    event_description TEXT NOT NULL
 );
+
+-- TODO
+-- CREATE TABLE event_tags (
+--   tag VARCHAR(255) REFERENCES tags (tag) NOT NULL,
+--   event_id UUID REFERENCES events (event_id) NOT NULL
+-- );
+
+-- CREATE TABLE tags (
+--   tag VARCHAR(255) PRIMARY KEY
+-- );
 
 COMMIT;

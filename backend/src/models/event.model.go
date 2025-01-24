@@ -11,4 +11,6 @@ type Event struct {
 	PaymentId           *string    `json:"paymentId"`
 	CreatedAt           time.Time  `json:"createdAt"`
 	Exp                 *time.Time `json:"exp"`
+	Tags                []string   `json:"tags"`
+	Description         string     `json:"description"`
 }

@@ -17,12 +17,12 @@ func NewEventServicePgImpl(db *sql.DB) EventService {
 	}
 }
 
-func (s *EventServicePgImpl) CreateEvent(ctx context.Context, name string, ownerId uint32, orgId string) (models.Event, error) {
+func (s *EventServicePgImpl) CreateEvent(ctx context.Context, name string, ownerId uint32, orgId string, description string) (models.Event, error) {
 	e := models.Event{}
 	err := s.db.QueryRowContext(ctx, `
-		INSERT INTO events (event_name, owner_user_id, owner_organization_id)
+		INSERT INTO events (event_name, owner_user_id, owner_organization_id, description)
 		VALUES
-			($1, $2, $3)
+			($1, $2, $3, $4)
 		RETURNING
 			event_id,
 			event_name,
@@ -31,11 +31,13 @@ func (s *EventServicePgImpl) CreateEvent(ctx context.Context, name string, owner
 			owner_organization_id,
 			payment_id,
 			created_at,
-			exp;
+			exp,
+			description;
 		`,
 		name,
 		ownerId,
 		orgId,
+		description,
 	).Scan(
 		&e.EventId,
 		&e.EventName,
@@ -45,6 +47,7 @@ func (s *EventServicePgImpl) CreateEvent(ctx context.Context, name string, owner
 		&e.PaymentId,
 		&e.CreatedAt,
 		&e.Exp,
+		&e.Description,
 	)
 
 	return e, err
@@ -61,7 +64,8 @@ func (s *EventServicePgImpl) GetEvent(ctx context.Context, eventId string) (mode
 			owner_organization_id,
 			payment_id,
 			created_at,
-			exp
+			exp,
+			description
 		FROM events
 		WHERE event_id = $1;
 	`, eventId).Scan(
@@ -73,6 +77,7 @@ func (s *EventServicePgImpl) GetEvent(ctx context.Context, eventId string) (mode
 		&e.PaymentId,
 		&e.CreatedAt,
 		&e.Exp,
+		&e.Description,
 	)
 
 	return e, err
