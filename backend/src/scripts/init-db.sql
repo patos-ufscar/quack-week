@@ -144,6 +144,7 @@ CREATE TABLE events (
 -- CREATE TABLE event_tags (
 --   tag VARCHAR(255) REFERENCES tags (tag) NOT NULL,
 --   event_id UUID REFERENCES events (event_id) NOT NULL
+--   PRIMARY KEY (tag, event_id)
 -- );
 
 -- CREATE TABLE tags (
